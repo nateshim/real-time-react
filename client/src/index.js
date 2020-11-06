@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import ReactEditor from './ReactEditor';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ReactEditor />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
