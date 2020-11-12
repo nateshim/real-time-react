@@ -1,6 +1,6 @@
 import History from './History';
 import PixelCollection from './PixelCollection';
-export default class PixelEditor {
+export default class Canvas {
     constructor(_canvas, width, height, tool, history = new History()) {
         this._canvas = _canvas;
         this.width = width;
