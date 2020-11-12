@@ -9,6 +9,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "body-parser": "^1.18.3",
     "codemirror": "^5.58.1",
     "cors": "^2.8.5",
@@ -17,11 +18,15 @@
     "pusher": "^3.0.1",
     "pusher-js": "^7.0.0",
     "pushid": "^1.0.0",
-    "react-codemirror2": "^7.2.1",
+    "react-google-login": "^5.1.22",
+    "react-router-dom": "^5.2.0",
     "yarn": "^1.22.10"
   },
   "devDependencies": {
     "axios": "^0.20.0",
     "concurrently": "^4.0.1"
+  },
+  "peerDependencies": {
+    "react": "17.0.1"
   }
 }
