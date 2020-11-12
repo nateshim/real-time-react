@@ -1,10 +1,8 @@
 {
-  "short_name": "Real Time React",
-  "name": "Real Time React",
-  "icons": [
-  ],
+  "short_name": "Pixit",
+  "name": "Pixit",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#000000"
 }

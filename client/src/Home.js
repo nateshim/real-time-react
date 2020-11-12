@@ -9,7 +9,7 @@ const Home = (props) => {
     return (
         <Box>
             <Typography>
-                Hello this is the home page
+            The quick brown fox jumps over the lazy dog
             </Typography>
         </Box>
     );

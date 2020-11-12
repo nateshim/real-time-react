@@ -1,20 +1,21 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { render } from 'react-dom';
-import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './Home';
 import PixelEditor from './PixelEditor';
 import Login from './auth/Login';
 import Logout from './auth/Logout';
-import {ThemeProvider, unstable_createMuiStrictModeTheme} from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
+import theme from './Theme';
 
-const theme = unstable_createMuiStrictModeTheme();
 function App() {
   return(
     <React.StrictMode>
       <ThemeProvider theme={theme}>
+        <CssBaseline/>
         <Router>
           <ScrollToTop/>
           <div>
