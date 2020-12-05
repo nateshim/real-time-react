@@ -1,22 +1,29 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import {withStyles, createStyles} from '@material-ui/styles';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Navigation from './Navigation';
 const Home = (props) => {
     const classes = props.classes;
+   
     return (
-        <Box>
-            <Typography>
-            The quick brown fox jumps over the lazy dog
-            </Typography>
+        <Box className={classes.backgroundContainer}>
+            <Navigation/>
         </Box>
     );
 }
 
 const useStyles = (theme) => createStyles({
-   
+   backgroundContainer: {
+       backgroundSize: 'cover',
+       background: theme.palette.primary.main,
+       overflowX: 'hidden',
+    },
+   section: {
+       display: 'flex',
+    },
+   logo: {
+       padding: '1rem',
+    }
 });
 
 export default withStyles(useStyles)(Home);

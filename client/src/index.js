@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import Home from './Home';
 import PixelEditor from './PixelEditor';
 import Login from './auth/Login';
-import Logout from './auth/Logout';
+import Signup from './auth/Signup';
 import {ThemeProvider} from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import theme from './Theme';
@@ -22,8 +22,9 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/login" component={Login}/>
-              <Route path="/logout" component={Logout}/>
+              <Route path="/signup" component={Signup}/>
               <Route path="/editor/:editorId" component={PixelEditor}/>
+              <Route path="/editor" component={PixelEditor}/>
             </Switch>
           </div>
         </Router>
