@@ -32,13 +32,20 @@ app.use(function (req, res, next) {
 });
 
 // API calls
-
+app.post('/api/user', (req, res) => {
+  userModel.getUserFromID(req.body)
+  .then(response => {
+    if (response.length != 0) {
+      return res.json({user: response[0]});
+    }
+  })
+})
 //LOCAL AUTHENTICATION
 app.post('/auth/login', (req, res) => {
   userModel.getUser(req.body)
   .then(response => {
     if (response.length != 0) {
-      return res.json({ path : '/editor' });
+      return res.json({ user: response[0].user_id, path : `/user/?id=${response[0].user_id}` });
     } else {
       return res.json({authSuccessful: false});
     }

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
-import Navigation from '../Navigation';
 import {useHistory} from 'react-router-dom';
 import {withStyles, createStyles} from '@material-ui/styles';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
@@ -10,6 +9,7 @@ import {
     Box,
     Typography,
 } from '@material-ui/core';
+import {AuthContext} from '../context/AuthContext';
 
 const Login = (props) => {
     const classes = props.classes;
@@ -17,6 +17,7 @@ const Login = (props) => {
     const [password, setPassword] = useState('');
     const [authSuccessful, setAuthSuccessful] = useState(true);
     const history = useHistory();
+    const authContext = useContext(AuthContext);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -25,23 +26,24 @@ const Login = (props) => {
             response = await axios.post('/auth/login', JSON.stringify({email, password}), {
                 headers: {'Content-Type' : 'application/json'}
             });
+            authContext.setUser(response.data.user);
         } catch (err) {
             setAuthSuccessful(false);
             console.log(err);
+            authContext.setUser(null);
         }
         if (response) {
             setAuthSuccessful(response.data.authSuccessful);
         }
-        if (response?.data.path) window.location.href = response.data.path;
+        if (response?.data.path) history.push(response.data.path);
         else history.push('/login');
     }
     
     const handleEmailChange = (event) => setEmail(event.target.value);
     const handlePasswordChange = (event) => setPassword(event.target.value);
-        
+    
     return(
-        <Box>
-            <Navigation/>
+            <Box>
             <Container maxWidth="md">
                 <ValidatorForm
                     onSubmit={handleSubmit}
@@ -67,19 +69,19 @@ const Login = (props) => {
                         onChange={handlePasswordChange}
                         name="password"
                         type="password"
-                        validators={['required']}
-                        errorMessages={['this field is required']}
-                        variant="outlined"
-                        size="small"
-                        value={password}
-                    />
-                    {authSuccessful === false && (
-                        <Typography>Sign in failed</Typography>
-                    )}
-                    <Button type="submit">Sign in</Button>
-                </ValidatorForm>
-            </Container>
-        </Box>
+                            validators={['required']}
+                            errorMessages={['this field is required']}
+                            variant="outlined"
+                            size="small"
+                            value={password}
+                        />
+                        {authSuccessful === false && (
+                            <Typography>Sign in failed</Typography>
+                        )}
+                        <Button type="submit">Sign in</Button>
+                    </ValidatorForm>
+                </Container>
+            </Box>
     )
 }
 

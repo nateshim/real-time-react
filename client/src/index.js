@@ -1,33 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { render } from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import Home from './Home';
-import PixelEditor from './PixelEditor';
-import Login from './auth/Login';
-import Signup from './auth/Signup';
 import {ThemeProvider} from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import theme from './Theme';
+import {AuthContext} from './context/AuthContext';
+import Main from './Main';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const setuser = (input) => {
+    setUser(input);
+  }
   return(
     <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Router>
-          <ScrollToTop/>
-          <div>
-            <Switch>
-              <Route exact path="/" component={Home}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/signup" component={Signup}/>
-              <Route path="/editor/:editorId" component={PixelEditor}/>
-              <Route path="/editor" component={PixelEditor}/>
-            </Switch>
-          </div>
-        </Router>
+        <AuthContext.Provider value={{user: user, setUser: setuser}}>
+          <CssBaseline/>
+          <Router>
+            <ScrollToTop/>
+            <Main/>
+          </Router>
+        </AuthContext.Provider>
       </ThemeProvider>
     </React.StrictMode>
   )

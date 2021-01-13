@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Navigation from '../Navigation';
 import {useHistory} from 'react-router-dom';
 import {withStyles, createStyles} from '@material-ui/styles';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
@@ -52,7 +51,6 @@ const Signup = (props) => {
     const handleVerifyPasswordChange = (event) => setVerifyPassword(event.target.value);
     return(
         <Box>
-            <Navigation/>
             <Container maxWidth="md">
                 <ValidatorForm
                     onSubmit={handleSubmit}
