@@ -55,6 +55,10 @@ app.post('/auth/login', (req, res) => {
   });
 });
 
+app.post('/auth/logout', (req, res) => {
+  return res.json({path: '/'});
+});
+
 app.post('/auth/signup', (req, res) => {
   userModel.createUser(req.body)
   .then(response => {

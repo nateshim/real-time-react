@@ -8,13 +8,14 @@ import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 const Navigation = (props) => {
     const classes = props.classes;
+
     return (
         <Box className={classes.backgroundContainer}>
             <Button component={Link} to={'/'}>
                 <img alt="logo" className={classes.logo} src={logo}/>
             </Button>
             <Container className={classes.userAuth}>
-                <Button component={Link} to={'/editor'}>
+                <Button component={Link} to={'/signup'}>
                     <Typography className={classes.text}>
                         Start Pixeling
                     </Typography>
